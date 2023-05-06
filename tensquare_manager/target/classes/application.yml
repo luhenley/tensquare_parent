@@ -1,0 +1,44 @@
+server: 
+  port: 9012
+spring: 
+  application:  
+    name: tensquare-manager #指定服务名
+eureka:
+  client:
+    register-with-eureka: true   # 把该服务注册到Eureka，被别的服务调用
+    fetch-registry: true  # 该服务需要从Eureka获取其他服务的注册信息
+    service-url:  # 向哪个Eureka注册
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:     # 如果服务在本地注册和调用，该配置可以省略；如果注册远程调用，该必须写的
+    prefer-ip-address: true
+
+jwt:
+  config:
+    key: itcast
+    ttl: 1800000
+zuul:
+  routes: # 路由配置
+    tensquare-gathering: #活动
+      path: /gathering/** #配置请求 URL 的请求规则 # 转发的路径
+      serviceId: tensquare-gathering #指定 Eureka 注册中心中的服务 id
+    tensquare-article: #文章
+      path: /article/** #配置请求 URL 的请求规则
+      serviceId: tensquare-article #指定 Eureka 注册中心中的服务 id
+    tensquare-base: #基础
+      path: /base/** #配置请求 URL 的请求规则
+      serviceId: tensquare-base #指定 Eureka 注册中心中的服务 id
+    tensquare-friend: #交友
+      path: /friend/** #配置请求 URL 的请求规则
+      serviceId: tensquare-friend  #指定 Eureka 注册中心中的服务 id
+    tensquare-qa: #问答
+      path: /qa/** #配置请求 URL 的请求规则
+      serviceId: tensquare-qa #指定 Eureka 注册中心中的服务 id
+    tensquare-recruit: #招聘
+      path: /recruit/** #配置请求 URL 的请求规则
+      serviceId: tensquare-recruit #指定 Eureka 注册中心中的服务 id
+    tensquare-spit: #吐槽
+      path: /spit/** #配置请求 URL 的请求规则
+      serviceId: tensquare-spit #指定 Eureka 注册中心中的服务 id
+    tensquare-user: #用户
+      path: /user/** #配置请求 URL 的请求规则
+      serviceId: tensquare-user #指定 Eureka 注册中心中的服务 id

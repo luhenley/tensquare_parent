@@ -1,0 +1,19 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: tensquare-config  # 微服务名称，在单个微服务中名称是没用的！在服务调用时使用的
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/lhnmy/henley.git
+          #username:  #如果是私有仓库，需要配置用户名密码
+          #password:
+  rabbitmq:
+    host: 192.168.12.133
+management: #暴露触发消息总线的地址
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

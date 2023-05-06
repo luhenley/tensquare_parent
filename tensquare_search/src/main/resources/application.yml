@@ -1,0 +1,16 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: tensquare-search #指定服务名
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.12.133:9300
+eureka:
+  client:
+    register-with-eureka: true   # 把该服务注册到Eureka，被别的服务调用
+    fetch-registry: true  # 该服务需要从Eureka获取其他服务的注册信息
+    service-url:  # 向哪个Eureka注册
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:     # 如果服务在本地注册和调用，该配置可以省略；如果注册远程调用，该必须写的
+    prefer-ip-address: true

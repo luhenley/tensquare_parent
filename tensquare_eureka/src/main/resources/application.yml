@@ -1,0 +1,11 @@
+server:
+  port: 6868
+spring:
+  application:
+    name: tensquare-eureka #指定服务名
+eureka:
+  client:
+    register-with-eureka: false  # 该服务是否往Eureka注册（服务提供方必须配置成true）
+    fetch-registry: false  # 是否需要从Eureka获取注册信息 （服务消费方必须配置成true）
+    service-url:  # 暴露Eureka的注册地址
+      defaultZone: http://127.0.0.1:${server.port}/eureka
